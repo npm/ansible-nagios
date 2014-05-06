@@ -1,0 +1,9 @@
+GIT
+  remote: https://github.com/laggyluke/ansible-role-nodejs
+  ref: master
+  sha: 9ae7523efd4ab5680aa967e418c329b695b7c4b1
+  specs:
+    laggyluke.nodejs (0.0.0)
+
+DEPENDENCIES
+  laggyluke.nodejs (>= 0)

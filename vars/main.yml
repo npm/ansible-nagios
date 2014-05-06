@@ -1,0 +1,63 @@
+nagios_packages:
+  - apache2
+  - libapache2-mod-php5
+  - build-essential
+  - libgd2-xpm-dev
+  - libssl-dev
+  - sendmail-bin
+  - sendmail
+  - heirloom-mailx
+  - wget
+  - curl
+  - daemon
+  - apt-file
+  - libnet-snmp-perl
+  - libperl5.14
+  - libpq5
+  - libradius1
+  - libsensors4
+  - libsnmp-base
+  - libsnmp15
+  - libtalloc2
+  - libtdb1
+  - libwbclient0
+  - samba-common
+  - samba-common-bin
+  - smbclient
+  - snmp
+  - whois
+  - libmysqlclient15-dev
+  - checkinstall
+  - python-passlib
+  - libwww-perl
+  - libcrypt-ssleay-perl
+  - libwww-perl
+  - libcrypt-ssleay-perl
+
+nagios_version: 4.0.6
+nagios_plugins_version: 2.0
+nagios_nrpe_version: 2.15
+nagios_build_directory: /tmp
+nagios_ssl_lib_path: /usr/lib/x86_64-linux-gnu
+nagios_password: nagiosadmin
+nagios_admin_email: ops@example.com
+nagios_admin_name: 'Nagios Admin'
+nagios_host: nagios.exmple.com
+nagios_log_directory: /var/log
+
+nagios_pagerduty_key: xxxxxxxxxxxxxxxxxxxxxx
+nagios_enable_pagerduty_notifications: true
+
+nagios_enable_ses_notifications: true
+nagios_aws_access_key_id: xxxxxxxxxxxxxxxx
+nagios_aws_access_key_secret: xxxxxxxxxxxxxxx
+nagios_ses_region: email.us-east-1.amazonaws.com
+
+nagios_tarball: http://downloads.sourceforge.net/project/nagios/nagios-4.x/nagios-4.0.6/nagios-4.0.6.tar.gz
+nagios_tarball_sha256sum: d400190c771eb90e0ba16351f6358fa7e22e42a7be986f2066db63518a14397b
+
+nagios_plugin_tarball: https://www.nagios-plugins.org/download/nagios-plugins-2.0.tar.gz
+nagios_plugin_tarball_sha256sum: ba1080648abd912f55c18b248e7065db77a87d0c72611ab16c17af8b65da7684
+
+nagios_nrpe_tarball: http://downloads.sourceforge.net/project/nagios/nrpe-2.x/nrpe-2.15/nrpe-2.15.tar.gz
+nagios_nrpe_tarball_sha256sum: 66383b7d367de25ba031d37762d83e2b55de010c573009c6f58270b137131072

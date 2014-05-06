@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+role "laggyluke.nodejs"

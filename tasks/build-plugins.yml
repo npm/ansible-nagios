@@ -1,0 +1,22 @@
+- name: download nagios plugins tarball
+  sudo: true
+  get_url: >
+    dest="{{nagios_build_directory}}"
+    url={{nagios_plugin_tarball}}
+    sha256sum={{nagios_plugin_tarball_sha256sum}}
+
+- name: untar the tarball
+  sudo: true
+  command: "tar -xvf nagios-plugins-{{nagios_plugins_version}}.tar.gz chdir={{nagios_build_directory}}"
+
+- name: configure
+  sudo: true
+  command: "./configure --with-nagios-user=nagios --with-nagios-group=nagios --with-openssl=/usr/bin/openssl --enable-perl-modules --enable-libtap chdir={{nagios_build_directory}}/nagios-plugins-{{nagios_plugins_version}}"
+
+- name: make
+  sudo: true
+  command: "make all chdir={{nagios_build_directory}}/nagios-plugins-{{nagios_plugins_version}}"
+
+- name: install nagios plugins package
+  sudo: true
+  command: "checkinstall --pkgname=nagios-plugins --requires='perl,libc6' --default chdir={{nagios_build_directory}}/nagios-plugins-{{nagios_plugins_version}}"

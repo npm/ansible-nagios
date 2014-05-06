@@ -1,0 +1,83 @@
+# Update and install dependent packages.
+- name: install nagios' dependent packages
+  sudo: true
+  apt: pkg={{ item }} state=present force=true update_cache=yes
+  with_items: nagios_packages
+
+# Create nagios users and groups.
+- name: create nagios group
+  sudo: true
+  group: >
+    gid=3000
+    name=nagios
+
+- name: create nagcmd group
+  sudo: true
+  group: >
+    gid=3001
+    name=nagcmd
+
+- name: create nagios user
+  sudo: true
+  user: >
+    uid=3000
+    group=nagios
+    groups=nagcmd
+    name=nagios
+    home=/usr/local/nagios
+    comment="Nagios Admin"
+
+- name: add user www-data to nagcmd group
+  sudo: true
+  user: >
+    groups=nagcmd
+    name=www-data
+
+# build and install nagios.
+- tasks:
+  include: build-nagios.yml
+
+# Build and install nagios check plugins.
+- tasks:
+  include: build-plugins.yml
+
+# Build and install nagios remote checks.
+- tasks:
+  include: build-nrpe.yml
+
+# Setup apache.
+- tasks:
+  include: apache.yml
+
+# Setup pagerduty.
+- tasks:
+  include: pagerduty.yml
+  when: nagios_enable_pagerduty_notifications
+
+# Setup SES for notifications.
+- tasks:
+  include: ses.yml
+  when: nagios_enable_ses_notifications
+
+- name: overwrite contacts.cfg
+  sudo: true
+  template: >
+    src=contacts.cfg.j2
+    dest=/usr/local/nagios/etc/objects/contacts.cfg
+    owner=nagios
+    group=nagios
+    mode=640
+
+- name: install nagios upstart script
+  sudo: true
+  copy: >
+    src=nagios.conf
+    dest=/etc/init/nagios.conf
+    owner=nagios
+    group=nagios
+    mode=640
+
+- name: restart nagios
+  sudo: true
+  service: name=nagios state=restarted
+  notify: restart apache

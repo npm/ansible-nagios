@@ -1,0 +1,60 @@
+- name: download nagios tarball
+  sudo: true
+  get_url: >
+    dest={{nagios_build_directory}}
+    url={{nagios_tarball}}
+    sha256sum={{nagios_tarball_sha256sum}}
+
+- name: untar the tarball
+  sudo: true
+  command: "tar -xvf nagios-{{nagios_version}}.tar.gz chdir={{nagios_build_directory}}"
+
+- name: create stylesheets directory
+  sudo: true
+  file: >
+    state=directory
+    path=/usr/local/nagios/share/stylesheets
+    owner=nagios
+    group=nagios
+    mode=770
+
+- name: create images directory
+  sudo: true
+  file: >
+    state=directory
+    path=/usr/local/nagios/share/images
+    owner=nagios
+    group=nagios
+    mode=770
+
+- name: configure
+  sudo: true
+  command: "./configure --prefix=/usr/local/nagios --with-nagios-user=nagios --with-nagios-group=nagios --with-command-user=nagios --with-command-group=nagcmd chdir={{nagios_build_directory}}/nagios-{{nagios_version}}"
+
+- name: make
+  sudo: true
+  command: "make all chdir={{nagios_build_directory}}/nagios-{{nagios_version}}"
+
+- name: install nagios package
+  sudo: true
+  command: "checkinstall --pkgname=nagios4 --requires='perl,libc6' --default chdir={{nagios_build_directory}}/nagios-{{nagios_version}}"
+
+- name: install sample config files
+  sudo: true
+  command: "checkinstall --pkgname=nagios-config --requires='perl,libc6' --default make install-config chdir={{nagios_build_directory}}/nagios-{{nagios_version}}"
+
+- name: configure external command permissions
+  sudo: true
+  command: "checkinstall --pkgname=nagios-commandmode --requires='perl,libc6' --default make install-commandmode chdir={{nagios_build_directory}}/nagios-{{nagios_version}}"
+
+- name: install apache config files
+  sudo: true
+  command: "checkinstall --pkgname=nagios-webconf --requires='perl,libc6' --default make install-webconf chdir={{nagios_build_directory}}/nagios-{{nagios_version}}"
+
+- name: install the exfoliation theme for the Nagios web interface
+  sudo: true
+  command: "checkinstall --install=no --pkgname=nagios-exfoliation --requires='perl,libc6' --default make install-exfoliation chdir={{nagios_build_directory}}/nagios-{{nagios_version}}"
+
+- name: install exfoliation
+  sudo: true
+  command: "dpkg --force-overwrite -i nagios-exfoliation_{{nagios_version}}-1_amd64.deb chdir={{nagios_build_directory}}/nagios-{{nagios_version}}"

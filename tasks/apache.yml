@@ -1,0 +1,70 @@
+- name: add passwords for nagios
+  sudo: true
+  htpasswd: >
+    name=nagiosadmin
+    password={{nagios_password}}
+    path=/usr/local/nagios/etc/htpasswd.users
+
+- name: set permissions on new password file
+  sudo: true
+  file: >
+    path=/usr/local/nagios/etc/htpasswd.users
+    owner=nagios
+    group=nagcmd
+
+- name: create certs directory
+  sudo: true
+  file: >
+    state=directory
+    path=/etc/apache2/ssl
+    owner=root
+    group=root
+    mode=770
+
+- name: create certs directory
+  sudo: true
+  file: >
+    state=directory
+    path=/etc/apache2/ssl
+    owner=root
+    group=root
+    mode=770
+
+- name: copy nagios.pem
+  sudo: true
+  copy: >
+    src=nagios.pem
+    dest=/etc/apache2/ssl/nagios.pem
+    owner=root
+    group=root
+    mode=640
+
+- name: copy nagios.key
+  sudo: true
+  copy: >
+    src=nagios.key
+    dest=/etc/apache2/ssl/nagios.key
+    owner=root
+    group=root
+    mode=640
+
+- name: copy nagios vhost
+  sudo: true
+  template: >
+    src=nagios.vhost.j2
+    dest=/etc/apache2/sites-available/nagios
+    owner=root
+    group=root
+    mode=640
+
+- name: disable default vhost
+  sudo: true
+  command: "a2dissite default"
+
+- name: enable nagios vhost
+  sudo: true
+  command: "a2ensite nagios"
+
+- name: enable apache ssl
+  sudo: true
+  command: "sudo a2enmod ssl"

@@ -1,0 +1,21 @@
+<VirtualHost *:443>
+    ServerAdmin {{nagios_admin_email}}
+    ServerName {{nagios_host}}
+    DocumentRoot /var/www/nagios
+
+    <Directory />
+        Options FollowSymLinks
+        AllowOverride None
+    </Directory>
+
+    <Directory /var/www/nagios>
+        Options -Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        allow from all
+    </Directory>
+
+     SSLEngine On
+     SSLCertificateFile /etc/apache2/ssl/nagios.pem
+     SSLCertificateKeyFile /etc/apache2/ssl/nagios.key
+</VirtualHost>

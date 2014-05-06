@@ -1,0 +1,39 @@
+- name: copy pagerduty contact
+  sudo: true
+  template: >
+    src=pagerduty_nagios.cfg.j2
+    dest=/usr/local/nagios/etc/objects/pagerduty_nagios.cfg
+    owner=nagios
+    group=nagios
+    mode=640
+
+- name: copy pagerduty script
+  sudo: true
+  copy: >
+    src=pagerduty_nagios.pl
+    dest=/usr/local/bin/pagerduty_nagios.pl
+    owner=nagios
+    group=nagios
+    mode=755
+
+- name: enable environment macros
+  sudo: true
+  lineinfile: >
+    dest=/usr/local/nagios/etc/nagios.cfg
+    line="enable_environment_macros=1"
+    regexp='^enable_environment_macros.*$'
+
+- name: "add pagerduty flush queue to cron"
+  sudo: true
+  cron: >
+    name="pagerduty flush queue"
+    job="/usr/local/bin/pagerduty_nagios.pl flush"
+    user=nagios
+    state=present
+
+- name: add pagerduty contact to nagios.cfg
+  sudo: true
+  lineinfile: >
+    dest=/usr/local/nagios/etc/nagios.cfg
+    line="cfg_file=/usr/local/nagios/etc/objects/pagerduty_nagios.cfg"
+    regexp="cfg_file\=/usr/local/nagios/etc/objects/pagerduty_nagios\.cfg"

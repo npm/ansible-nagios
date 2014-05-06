@@ -1,13 +1,14 @@
 ---
 galaxy_info:
   author: Benjamin Coe
-  description: Install and configure Nagios.
+  description: A role for installing nagios 4 with pagerduty.
   min_ansible_version: 1.4
   version: 0.0.1
+  license: ISC
   platforms:
   - name: Ubuntu
     versions:
     - all
   categories:
-  - system
-  - monitoring
+dependencies:
+  - { role: "laggyluke.nodejs" }
