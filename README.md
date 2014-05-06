@@ -18,6 +18,7 @@ Configuration
 To get things up and running on an Ubuntu machine, here's the variables you will need to set:
 
 ```yaml
+nagios_user: nagiosadmin
 nagios_password: nagiosadmin
 nagios_host: nagios.example.com
 nagios_pagerduty_key: xxxxxxxxxxxxxxxxxxxxx
@@ -32,9 +33,17 @@ nagios_enable_pagerduty_notifications: true
 nagios_enable_ses_notifications: true
 ```
 
+How it Works?
+------------
+
+* Create a playbook that references the nagios role.
+* Set the appropriate variables.
+* Run this role on a clean server.
+* You will now be able to access nagios on the host at **/nagios**.
+
 * See `/vars/main.yml` for more configuration options.
 
-Ansible Nagios Config
+Ansible-Nagios-Config
 ---------------------
 
 This Ansible role is designed to be used along with, [Ansible-Nagios-Config](http://github.com/npm/ansible-nagios-config).

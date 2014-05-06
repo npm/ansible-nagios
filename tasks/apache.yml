@@ -1,7 +1,7 @@
 - name: add passwords for nagios
   sudo: true
   htpasswd: >
-    name=nagiosadmin
+    name={{nagios_user}}
     password={{nagios_password}}
     path=/usr/local/nagios/etc/htpasswd.users
 
