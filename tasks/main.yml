@@ -4,6 +4,12 @@
   apt: pkg={{ item }} state=present force=true update_cache=yes
   with_items: nagios_packages
 
+- name: install legacy packages
+  sudo: true
+  apt: pkg={{ item }} state=present force=true update_cache=yes
+  with_items: nagios_legacy_packages
+  when: legacy | default(false)
+  
 # Create nagios users and groups.
 - name: create nagios group
   sudo: true

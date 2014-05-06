@@ -15,7 +15,7 @@ Features
 Configuration
 -------------
 
-To get things up and running on an Ubuntu machine, here's the variables you will need to set:
+To get things up and running on an Ubuntu machine, here are the variables you will need to set:
 
 ```yaml
 nagios_user: nagiosadmin
@@ -46,5 +46,5 @@ How it Works?
 Ansible-Nagios-Config
 ---------------------
 
-This Ansible role is designed to be used along with, [Ansible-Nagios-Config](http://github.com/npm/ansible-nagios-config).
-Use this role to setup Nagios' configuration.
+This Ansible role is designed to be used along with [Ansible-Nagios-Config](http://github.com/npm/ansible-nagios-config).
+Use this role to set up Nagios' configuration.
