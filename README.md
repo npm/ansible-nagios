@@ -39,7 +39,7 @@ How it Works?
 * Create a playbook that references the nagios role.
 * Set the appropriate variables.
 * Run this role on a clean server.
-* You will now be able to access nagios on the host at **/nagios**.
+* You will now be able to access nagios on the host at **https://your-host/nagios**.
 
 * See `/vars/main.yml` for more configuration options.
 
