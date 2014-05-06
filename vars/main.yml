@@ -31,8 +31,6 @@ nagios_packages:
   - python-passlib
   - libwww-perl
   - libcrypt-ssleay-perl
-  - libwww-perl
-  - libcrypt-ssleay-perl
 
 nagios_version: 4.0.6
 nagios_plugins_version: 2.0

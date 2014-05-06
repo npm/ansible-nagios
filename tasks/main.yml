@@ -59,6 +59,13 @@
   include: ses.yml
   when: nagios_enable_ses_notifications
 
+- name: disable flap detection
+  sudo: true
+  lineinfile: >
+    dest=/usr/local/nagios/etc/nagios.cfg
+    line="enable_flap_detection=0"
+    regexp="^enable_flap_detection.*$"
+
 - name: overwrite contacts.cfg
   sudo: true
   template: >

@@ -33,6 +33,8 @@ nagios_enable_pagerduty_notifications: true
 nagios_enable_ses_notifications: true
 ```
 
+* See `/vars/main.yml` for more configuration options.
+
 How it Works?
 ------------
 
@@ -40,8 +42,6 @@ How it Works?
 * Set the appropriate variables.
 * Run this role on a clean server.
 * You will now be able to access nagios on the host at **https://your-host/nagios**.
-
-* See `/vars/main.yml` for more configuration options.
 
 Ansible-Nagios-Config
 ---------------------
