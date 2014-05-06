@@ -37,5 +37,5 @@ nagios_enable_ses_notifications: true
 Ansible Nagios Config
 ---------------------
 
-This Ansible role is designed to be used along with, [Ansible-Nagios-Config](http://github.com/npm/ansible-nagios-config)...
+This Ansible role is designed to be used along with, [Ansible-Nagios-Config](http://github.com/npm/ansible-nagios-config).
 Use this role to setup Nagios' configuration.
