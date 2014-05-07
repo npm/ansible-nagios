@@ -1,21 +1,34 @@
 <VirtualHost *:443>
     ServerAdmin {{nagios_admin_email}}
     ServerName {{nagios_host}}
-    DocumentRoot /var/www/nagios
 
-    <Directory />
-        Options FollowSymLinks
-        AllowOverride None
+    ScriptAlias /nagios/cgi-bin "/usr/local/nagios/sbin"
+
+    <Directory "/usr/local/nagios/sbin">
+       Options ExecCGI
+       AllowOverride None
+       Order allow,deny
+       Allow from all
+       AuthName "Nagios Access"
+       AuthType Basic
+       AuthUserFile /usr/local/nagios/etc/htpasswd.users
+       Require valid-user
     </Directory>
 
-    <Directory /var/www/nagios>
-        Options -Indexes FollowSymLinks MultiViews
-        AllowOverride All
-        Order allow,deny
-        allow from all
+    Alias /nagios "/usr/local/nagios/share"
+
+    <Directory "/usr/local/nagios/share">
+       Options None
+       AllowOverride None
+       Order allow,deny
+       Allow from all
+       AuthName "Nagios Access"
+       AuthType Basic
+       AuthUserFile /usr/local/nagios/etc/htpasswd.users
+       Require valid-user
     </Directory>
 
-     SSLEngine On
-     SSLCertificateFile /etc/apache2/ssl/nagios.pem
-     SSLCertificateKeyFile /etc/apache2/ssl/nagios.key
+    SSLEngine On
+    SSLCertificateFile /etc/apache2/ssl/nagios.pem
+    SSLCertificateKeyFile /etc/apache2/ssl/nagios.key
 </VirtualHost>

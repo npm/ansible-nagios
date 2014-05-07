@@ -15,7 +15,7 @@ Features
 Configuration
 -------------
 
-To get things up and running on an Ubuntu machine, here's the variables you will need to set:
+To get things up and running on an Ubuntu machine, here are the variables you will need to set:
 
 ```yaml
 nagios_user: nagiosadmin
@@ -31,6 +31,8 @@ nagios_ses_region: email.us-east-1.amazonaws.com
 
 nagios_enable_pagerduty_notifications: true
 nagios_enable_ses_notifications: true
+
+legacy: false # set to true, for older builds of Ubuntu like Precise.
 ```
 
 * See `/vars/main.yml` for more configuration options.
@@ -46,5 +48,5 @@ How it Works?
 Ansible-Nagios-Config
 ---------------------
 
-This Ansible role is designed to be used along with, [Ansible-Nagios-Config](http://github.com/npm/ansible-nagios-config).
-Use this role to setup Nagios' configuration.
+This Ansible role is designed to be used along with [Ansible-Nagios-Config](http://github.com/npm/ansible-nagios-config).
+Use this role to set up Nagios' configuration.

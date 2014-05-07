@@ -12,12 +12,10 @@ nagios_packages:
   - daemon
   - apt-file
   - libnet-snmp-perl
-  - libperl5.14
   - libpq5
   - libradius1
   - libsensors4
   - libsnmp-base
-  - libsnmp15
   - libtalloc2
   - libtdb1
   - libwbclient0
@@ -31,6 +29,10 @@ nagios_packages:
   - python-passlib
   - libwww-perl
   - libcrypt-ssleay-perl
+
+nagios_legacy_packages:
+  - libperl5.14
+  - libsnmp15
 
 nagios_version: 4.0.6
 nagios_plugins_version: 2.0
