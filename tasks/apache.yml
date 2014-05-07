@@ -1,3 +1,9 @@
+- name: add apache user to nagios group
+  sudo: true
+  user: >
+    groups=nagios
+    name=apache
+
 - name: add passwords for nagios
   sudo: true
   htpasswd: >
@@ -52,14 +58,21 @@
   sudo: true
   template: >
     src=nagios.vhost.j2
+    dest=/etc/apache2/sites-available/nagios.conf
+    owner=root
+    group=root
+    mode=640
+  when: not (legacy | default(false))
+
+- name: copy nagios vhost for pre-trusty
+  sudo: true
+  template: >
+    src=nagios.vhost.j2
     dest=/etc/apache2/sites-available/nagios
     owner=root
     group=root
     mode=640
-
-- name: disable default vhost
-  sudo: true
-  command: "a2dissite default"
+  when: legacy | default(false)
 
 - name: enable nagios vhost
   sudo: true
@@ -67,4 +80,8 @@
 
 - name: enable apache ssl
   sudo: true
-  command: "sudo a2enmod ssl"
+  command: "a2enmod ssl"
+
+- name: enable apache ssl
+  sudo: true
+  command: "a2enmod cgi"

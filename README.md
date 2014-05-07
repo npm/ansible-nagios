@@ -31,6 +31,8 @@ nagios_ses_region: email.us-east-1.amazonaws.com
 
 nagios_enable_pagerduty_notifications: true
 nagios_enable_ses_notifications: true
+
+legacy: false # set to true, for older builds of Ubuntu like Precise.
 ```
 
 * See `/vars/main.yml` for more configuration options.

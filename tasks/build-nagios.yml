@@ -35,7 +35,6 @@
     owner=nagios
     group=nagios
     mode=770
-  ignore_errors: yes
 
 - name: configure
   sudo: true
