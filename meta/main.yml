@@ -8,7 +8,8 @@ galaxy_info:
   platforms:
   - name: Ubuntu
     versions:
-    - all
+    - precise
+    - trusty
   categories:
     - system
     - monitoring

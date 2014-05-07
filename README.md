@@ -56,3 +56,15 @@ Ansible-Nagios-Config
 
 This Ansible role is designed to be used along with [Ansible-Nagios-Config](http://github.com/npm/ansible-nagios-config).
 Use this role to set up Nagios' configuration.
+
+Compatibility
+---------
+
+This role has been tested on the following Linux distributions:
+
+**Ubuntu:**
+
+* Precise.
+* Trusty.
+
+Please open an issue if you confirm the role works on other distributions.
