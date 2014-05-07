@@ -10,5 +10,7 @@ galaxy_info:
     versions:
     - all
   categories:
+    - system
+    - monitoring
 dependencies:
   - { role: "laggyluke.nodejs" }
