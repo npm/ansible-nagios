@@ -27,6 +27,15 @@
     group=nagios
     mode=770
 
+- name: create apache config directory
+  sudo: true
+  file: >
+    state=directory
+    path=/etc/httpd/conf.d/
+    owner=nagios
+    group=nagios
+    mode=770
+
 - name: configure
   sudo: true
   command: "./configure --prefix=/usr/local/nagios --with-nagios-user=nagios --with-nagios-group=nagios --with-command-user=nagios --with-command-group=nagcmd chdir={{nagios_build_directory}}/nagios-{{nagios_version}}"
