@@ -12,6 +12,12 @@ Features
 * Installs NRPE, for performing remote checks.
 * Installs a recent build of nagios-plugins.
 
+Installation
+------------
+
+Ansible Nagios has some dependencies on other roles, checkout [librarian-ansible](https://github.com/bcoe/librarian-ansible)
+a great tool for managing Ansible dependencies.
+
 Configuration
 -------------
 
