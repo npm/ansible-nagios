@@ -62,3 +62,6 @@ nagios_plugin_tarball_sha256sum: ba1080648abd912f55c18b248e7065db77a87d0c72611ab
 
 nagios_nrpe_tarball: http://downloads.sourceforge.net/project/nagios/nrpe-2.x/nrpe-2.15/nrpe-2.15.tar.gz
 nagios_nrpe_tarball_sha256sum: 66383b7d367de25ba031d37762d83e2b55de010c573009c6f58270b137131072
+
+nagios_ssl_cert_pem: /etc/apache2/ssl/nagios.pem
+nagios_ssl_cert_key: /etc/apache2/ssl/nagios.key

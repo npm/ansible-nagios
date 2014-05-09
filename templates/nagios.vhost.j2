@@ -29,6 +29,6 @@
     </Directory>
 
     SSLEngine On
-    SSLCertificateFile /etc/apache2/ssl/nagios.pem
-    SSLCertificateKeyFile /etc/apache2/ssl/nagios.key
+    SSLCertificateFile {{nagios_ssl_cert_pem}}
+    SSLCertificateKeyFile {{nagios_ssl_cert_key}}
 </VirtualHost>
