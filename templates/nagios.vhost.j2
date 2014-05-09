@@ -1,8 +1,16 @@
+<VirtualHost *:80>
+    ServerAdmin {{nagios_admin_email}}
+    ServerName {{nagios_host}}
+    Redirect / https://{{nagios_host}}/
+</VirtualHost>
+
 <VirtualHost *:443>
     ServerAdmin {{nagios_admin_email}}
     ServerName {{nagios_host}}
 
     ScriptAlias /nagios/cgi-bin "/usr/local/nagios/sbin"
+
+    RedirectMatch ^/$ /nagios/
 
     <Directory "/usr/local/nagios/sbin">
        Options ExecCGI
