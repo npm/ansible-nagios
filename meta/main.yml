@@ -13,3 +13,6 @@ galaxy_info:
   categories:
     - system
     - monitoring
+  dependencies:
+    - role: laggyluke.nodejs
+      when: nagios_enable_ses_notifications
