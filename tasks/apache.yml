@@ -82,6 +82,6 @@
   sudo: true
   command: "a2enmod ssl"
 
-- name: enable apache ssl
+- name: enable apache cgi
   sudo: true
   command: "a2enmod cgi"
