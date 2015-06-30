@@ -48,6 +48,8 @@ nagios_log_directory: /var/log
 
 nagios_pagerduty_key: xxxxxxxxxxxxxxxxxxxxxx
 nagios_enable_pagerduty_notifications: true
+nagios_pagerduty_service_notification_options: 'w,u,c,r'
+nagios_pagerduty_host_notification_options: 'd,u,r'
 
 nagios_enable_ses_notifications: true
 nagios_aws_access_key_id: xxxxxxxxxxxxxxxx

@@ -6,6 +6,7 @@
     owner=nagios
     group=nagios
     mode=640
+  tags: configuration
 
 - name: copy pagerduty script
   sudo: true
