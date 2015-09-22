@@ -29,12 +29,13 @@ nagios_packages:
   - python-passlib
   - libwww-perl
   - libcrypt-ssleay-perl
+  - unzip
 
 nagios_legacy_packages:
   - libperl5.14
   - libsnmp15
 
-nagios_version: 4.0.6
+nagios_version: 4.1.1
 nagios_plugins_version: 2.0
 nagios_nrpe_version: 2.15
 nagios_build_directory: /tmp
@@ -54,8 +55,8 @@ nagios_aws_access_key_id: xxxxxxxxxxxxxxxx
 nagios_aws_access_key_secret: xxxxxxxxxxxxxxx
 nagios_ses_region: email.us-east-1.amazonaws.com
 
-nagios_tarball: http://downloads.sourceforge.net/project/nagios/nagios-4.x/nagios-4.0.6/nagios-4.0.6.tar.gz
-nagios_tarball_sha256sum: d400190c771eb90e0ba16351f6358fa7e22e42a7be986f2066db63518a14397b
+nagios_tarball: http://downloads.sourceforge.net/project/nagios/nagios-4.x/nagios-4.1.1/nagios-4.1.1.tar.gz
+nagios_tarball_sha256sum: 58218e5e66c8078fc578a60db33b5c3da10fc6a793e97d2b00780517e3efa0a7
 
 nagios_plugin_tarball: https://www.nagios-plugins.org/download/nagios-plugins-2.0.tar.gz
 nagios_plugin_tarball_sha256sum: ba1080648abd912f55c18b248e7065db77a87d0c72611ab16c17af8b65da7684
