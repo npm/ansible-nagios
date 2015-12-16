@@ -36,23 +36,23 @@
     group=root
     mode=770
 
-- name: copy nagios.pem
-  sudo: true
-  copy: >
-    src=nagios.pem
-    dest=/etc/apache2/ssl/nagios.pem
-    owner=root
-    group=root
-    mode=640
+#- name: copy nagios.pem
+#  sudo: true
+#  copy: >
+#    src=nagios.pem
+#    dest=/etc/apache2/ssl/nagios.pem
+#    owner=root
+#    group=root
+#    mode=640
 
-- name: copy nagios.key
-  sudo: true
-  copy: >
-    src=nagios.key
-    dest=/etc/apache2/ssl/nagios.key
-    owner=root
-    group=root
-    mode=640
+#- name: copy nagios.key
+#  sudo: true
+#  copy: >
+#    src=nagios.key
+#    dest=/etc/apache2/ssl/nagios.key
+#    owner=root
+#    group=root
+#    mode=640
 
 - name: copy nagios vhost
   sudo: true

@@ -42,9 +42,9 @@ nagios_build_directory: /tmp
 nagios_ssl_lib_path: /usr/lib/x86_64-linux-gnu
 nagios_password: nagiosadmin
 nagios_user: nagiosadmin
-nagios_admin_email: ops@example.com
-nagios_admin_name: 'Nagios Admin'
-nagios_host: nagios.exmple.com
+#nagios_admin_email: ops@example.com
+#nagios_admin_name: 'Nagios Admin'
+#nagios_host: nagios.exmple.com
 nagios_log_directory: /var/log
 
 nagios_pagerduty_key: xxxxxxxxxxxxxxxxxxxxxx
