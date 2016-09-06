@@ -36,19 +36,19 @@
     group=nagios
     mode=770
 
-- name: configure
+- name: configure nagios
   become: true
   command: "./configure --prefix=/usr/local/nagios --with-nagios-user=nagios --with-nagios-group=nagios --with-command-user=nagios --with-command-group=nagcmd chdir={{nagios_build_directory}}/nagios-{{nagios_version}}"
 
-- name: make
   command: "make all chdir={{nagios_build_directory}}/nagios-{{nagios_version}}"
+- name: make nagios
   become: true
 
 - name: install nagios package
   become: true
   command: "checkinstall --pkgname=nagios4 --requires='perl,libc6' --default chdir={{nagios_build_directory}}/nagios-{{nagios_version}}"
 
-- name: install sample config files
+- name: install sample config files for nagios
   become: true
   command: "checkinstall --pkgname=nagios-config --requires='perl,libc6' --default make install-config chdir={{nagios_build_directory}}/nagios-{{nagios_version}}"
 

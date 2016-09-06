@@ -27,32 +27,23 @@
     group=root
     mode=770
 
-- name: create certs directory
-  file: >
-    state=directory
-    path=/etc/apache2/ssl
+- name: copy nagios ssl certificate
   become: true
+  copy: >
+    content="{{ nagios_ssl_pem }}"
+    dest=/etc/apache2/ssl/nagios.pem
     owner=root
     group=root
-    mode=770
+    mode=640
 
-#- name: copy nagios.pem
-#  sudo: true
-#  copy: >
-#    src=nagios.pem
-#    dest=/etc/apache2/ssl/nagios.pem
-#    owner=root
-#    group=root
-#    mode=640
-
-#- name: copy nagios.key
-#  copy: >
-#    src=nagios.key
-#    dest=/etc/apache2/ssl/nagios.key
-#    owner=root
-#    group=root
-#    mode=640
+- name: copy nagios ssl key
   become: true
+  copy: >
+    content="{{ nagios_ssl_key }}"
+    dest=/etc/apache2/ssl/nagios.key
+    owner=root
+    group=root
+    mode=640
 
 - name: copy nagios vhost
   become: true
