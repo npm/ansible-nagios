@@ -40,9 +40,9 @@
   become: true
   command: "./configure --prefix=/usr/local/nagios --with-nagios-user=nagios --with-nagios-group=nagios --with-command-user=nagios --with-command-group=nagcmd chdir={{nagios_build_directory}}/nagios-{{nagios_version}}"
 
-  command: "make all chdir={{nagios_build_directory}}/nagios-{{nagios_version}}"
 - name: make nagios
   become: true
+  shell: echo "y\ny\ny\n" | make all chdir={{nagios_build_directory}}/nagios-{{nagios_version}}
 
 - name: install nagios package
   become: true
