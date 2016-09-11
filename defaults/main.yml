@@ -35,7 +35,7 @@ nagios_legacy_packages:
   - libperl5.14
   - libsnmp15
 
-nagios_version: 4.2.0
+nagios_version: 4.2.1
 nagios_plugins_version: 2.1.2
 nagios_nrpe_version: 2.15
 nagios_build_directory: /tmp
@@ -55,8 +55,8 @@ nagios_aws_access_key_id: xxxxxxxxxxxxxxxx
 nagios_aws_access_key_secret: xxxxxxxxxxxxxxx
 nagios_ses_region: email.us-east-1.amazonaws.com
 
-nagios_tarball: https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.2.0.tar.gz
-nagios_tarball_sha256sum: 93be769854d7e64c526da29b79c92fb500a9795a82547a85ca0a9180a8f6725c
+nagios_tarball: https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.2.1.tar.gz
+nagios_tarball_sha256sum: cb62c5c16964cfc143b126a576a7f8130e634cb9dda4dd3bd3632598d7855a87
 
 nagios_plugin_tarball: https://www.nagios-plugins.org/download/nagios-plugins-2.1.2.tar.gz
 nagios_plugin_tarball_sha256sum: f2ed5d07b1823341f9db56b187ae5c0ee9018b6c69a152b6a240c5e14cd94ea4
