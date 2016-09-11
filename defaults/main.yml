@@ -1,6 +1,7 @@
 nagios_packages:
   - apache2
-  - libapache2-mod-php5
+  - libmysqlclient-dev
+  - libapache2-mod-php
   - build-essential
   - libgd2-xpm-dev
   - libssl-dev
@@ -10,7 +11,6 @@ nagios_packages:
   - apt-file
   - libnet-snmp-perl
   - libpq5
-  - libradius1
   - libsensors4
   - libsnmp-base
   - libtalloc2
@@ -21,7 +21,6 @@ nagios_packages:
   - smbclient
   - snmp
   - whois
-  - libmysqlclient15-dev
   - checkinstall
   - python-passlib
   - libwww-perl

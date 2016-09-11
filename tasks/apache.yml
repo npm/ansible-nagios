@@ -1,25 +1,25 @@
 - name: add apache user to nagios group
-  sudo: true
+  become: true
   user: >
     groups=nagios
     name=apache
 
 - name: add passwords for nagios
-  sudo: true
+  become: true
   htpasswd: >
     name="{{nagios_user}}"
     password="{{nagios_password}}"
     path=/usr/local/nagios/etc/htpasswd.users
 
 - name: set permissions on new password file
-  sudo: true
+  become: true
   file: >
     path=/usr/local/nagios/etc/htpasswd.users
     owner=nagios
     group=nagcmd
 
 - name: create certs directory
-  sudo: true
+  become: true
   file: >
     state=directory
     path=/etc/apache2/ssl
@@ -27,35 +27,26 @@
     group=root
     mode=770
 
-- name: create certs directory
-  sudo: true
-  file: >
-    state=directory
-    path=/etc/apache2/ssl
+- name: copy nagios ssl certificate
+  become: true
+  copy: >
+    content="{{ nagios_ssl_pem }}"
+    dest=/etc/apache2/ssl/nagios.pem
     owner=root
     group=root
-    mode=770
+    mode=640
 
-#- name: copy nagios.pem
-#  sudo: true
-#  copy: >
-#    src=nagios.pem
-#    dest=/etc/apache2/ssl/nagios.pem
-#    owner=root
-#    group=root
-#    mode=640
-
-#- name: copy nagios.key
-#  sudo: true
-#  copy: >
-#    src=nagios.key
-#    dest=/etc/apache2/ssl/nagios.key
-#    owner=root
-#    group=root
-#    mode=640
+- name: copy nagios ssl key
+  become: true
+  copy: >
+    content="{{ nagios_ssl_key }}"
+    dest=/etc/apache2/ssl/nagios.key
+    owner=root
+    group=root
+    mode=640
 
 - name: copy nagios vhost
-  sudo: true
+  become: true
   template: >
     src=nagios.vhost.j2
     dest=/etc/apache2/sites-available/nagios.conf
@@ -65,7 +56,7 @@
   when: not (legacy | default(false))
 
 - name: copy nagios vhost for pre-trusty
-  sudo: true
+  become: true
   template: >
     src=nagios.vhost.j2
     dest=/etc/apache2/sites-available/nagios
@@ -75,13 +66,13 @@
   when: legacy | default(false)
 
 - name: enable nagios vhost
-  sudo: true
+  become: true
   command: "a2ensite nagios"
 
 - name: enable apache ssl
-  sudo: true
+  become: true
   command: "a2enmod ssl"
 
 - name: enable apache cgi
-  sudo: true
+  become: true
   command: "a2enmod cgi"

@@ -1,30 +1,30 @@
 # Update and install dependent packages.
 - name: install nagios' dependent packages
-  sudo: true
+  become: true
   apt: pkg={{ item }} state=present force=true update_cache=yes
-  with_items: nagios_packages
+  with_items: "{{nagios_packages}}"
 
 - name: install legacy packages
-  sudo: true
+  become: true
   apt: pkg={{ item }} state=present force=true update_cache=yes
   with_items: nagios_legacy_packages
   when: legacy | default(false)
 
 # Create nagios users and groups.
 - name: create nagios group
-  sudo: true
+  become: true
   group: >
     gid=3000
     name=nagios
 
 - name: create nagcmd group
-  sudo: true
+  become: true
   group: >
     gid=3001
     name=nagcmd
 
 - name: create nagios user
-  sudo: true
+  become: true
   user: >
     uid=3000
     group=nagios
@@ -34,7 +34,7 @@
     comment="Nagios Admin"
 
 - name: add user www-data to nagcmd group
-  sudo: true
+  become: true
   user: >
     groups=nagcmd
     name=www-data
@@ -66,14 +66,14 @@
   when: nagios_enable_ses_notifications
 
 - name: disable flap detection
-  sudo: true
+  become: true
   lineinfile: >
     dest=/usr/local/nagios/etc/nagios.cfg
     line="enable_flap_detection=0"
     regexp="^enable_flap_detection.*$"
 
 - name: overwrite contacts.cfg
-  sudo: true
+  become: true
   template: >
     src=contacts.cfg.j2
     dest=/usr/local/nagios/etc/objects/contacts.cfg
@@ -81,16 +81,24 @@
     group=nagios
     mode=640
 
-- name: install nagios upstart script
-  sudo: true
+- name: install nagios systemd script
+  become: true
   copy: >
-    src=nagios.conf
-    dest=/etc/init/nagios.conf
-    owner=nagios
-    group=nagios
+    src=nagios.service
+    dest=/etc/systemd/system/nagios.service
+    owner=root
+    group=root
     mode=640
 
+- name: reload nagios systemd script
+  become: yes
+  command: systemctl enable /etc/systemd/system/nagios.service
+
+- name: enable nagios systemd script
+  become: yes
+  command: systemctl enable nagios
+
 - name: restart nagios
-  sudo: true
+  become: true
   service: name=nagios state=restarted
   notify: restart apache
