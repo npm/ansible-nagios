@@ -4,8 +4,6 @@ nagios_packages:
   - build-essential
   - libgd2-xpm-dev
   - libssl-dev
-  - sendmail-bin
-  - sendmail
   - heirloom-mailx
   - wget
   - curl
