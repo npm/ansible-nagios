@@ -1,5 +1,5 @@
 - name: copy ses contact
-  sudo: true
+  become: true
   template: >
     src=ses_nagios.cfg.j2
     dest=/usr/local/nagios/etc/objects/ses_nagios.cfg
@@ -8,7 +8,7 @@
     mode=640
 
 - name: create notify-by-ses log
-  sudo: true
+  become: true
   copy: >
     content=""
     dest="{{nagios_log_directory}}/notify-by-ses.log"
@@ -17,11 +17,11 @@
     mode=770
 
 - name: install ses notifier
-  sudo: true
+  become: true
   command: npm install notify-by-ses -g
 
 - name: add ses contact to nagios.cfg
-  sudo: true
+  become: true
   lineinfile: >
     dest=/usr/local/nagios/etc/nagios.cfg
     line="cfg_file=/usr/local/nagios/etc/objects/ses_nagios.cfg"
