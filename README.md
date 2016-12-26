@@ -29,7 +29,7 @@ nagios_password: nagiosadmin
 nagios_host: nagios.example.com
 nagios_pagerduty_key: xxxxxxxxxxxxxxxxxxxxx
 nagios_admin_email: ops@example.com
-nagios_amdin_name: 'Nagios Admin'
+nagios_admin_name: 'Nagios Admin'
 
 nagios_aws_access_key_id: xxxxxxxxxxxxxxxx
 nagios_aws_access_key_secret: xxxxxxxxxxxxxxx
