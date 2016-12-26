@@ -41,7 +41,7 @@ nagios_enable_ses_notifications: true
 legacy: false # set to true, for older builds of Ubuntu like Precise.
 ```
 
-* See `/vars/main.yml` for more configuration options.
+* See `/defaults/main.yml` for more configuration options.
 
 How it Works?
 ------------
