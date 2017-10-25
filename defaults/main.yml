@@ -31,7 +31,7 @@ nagios_legacy_packages:
   - libperl5.14
   - libsnmp15
 
-nagios_version: 4.3.3
+nagios_version: 4.3.4
 nagios_plugins_version: 2.1.4 # 2.2.0 has a broken check_http when asserting 401s
 nagios_nrpe_version: 3.2.0
 nagios_build_directory: /tmp
@@ -51,8 +51,8 @@ nagios_aws_access_key_id: xxxxxxxxxxxxxxxx
 nagios_aws_access_key_secret: xxxxxxxxxxxxxxx
 nagios_ses_region: email.us-east-1.amazonaws.com
 
-nagios_tarball: https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.3.3.tar.gz
-nagios_tarball_sha256sum: 1fc4c72f76c720884dd3b538dc423b44f3bdde24e014f4212e58046a1fc114b6
+nagios_tarball: https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.3.4.tar.gz
+nagios_tarball_sha256sum: c90b7812d9e343db12be19a572e15c415c5d6353a91c5e226e432c2d4aaa44f1
 
 nagios_plugin_tarball: http://www.nagios-plugins.org/download/nagios-plugins-2.1.4.tar.gz
 nagios_plugin_tarball_sha256sum: 4355b5daede0fa72bbb55d805d724dfa3d05e7f66592ad71b4e047c6d9cdd090
