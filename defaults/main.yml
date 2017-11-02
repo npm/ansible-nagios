@@ -1,19 +1,16 @@
 nagios_packages:
   - apache2
-  - libapache2-mod-php5
+  - libmysqlclient-dev
+  - libapache2-mod-php
   - build-essential
   - libgd2-xpm-dev
   - libssl-dev
-  - sendmail-bin
-  - sendmail
-  - heirloom-mailx
   - wget
   - curl
   - daemon
   - apt-file
   - libnet-snmp-perl
   - libpq5
-  - libradius1
   - libsensors4
   - libsnmp-base
   - libtalloc2
@@ -24,26 +21,26 @@ nagios_packages:
   - smbclient
   - snmp
   - whois
-  - libmysqlclient15-dev
   - checkinstall
   - python-passlib
   - libwww-perl
   - libcrypt-ssleay-perl
+  - unzip
 
 nagios_legacy_packages:
   - libperl5.14
   - libsnmp15
 
-nagios_version: 4.0.6
-nagios_plugins_version: 2.0
-nagios_nrpe_version: 2.15
+nagios_version: 4.3.4
+nagios_plugins_version: 2.1.4 # 2.2.0 has a broken check_http when asserting 401s
+nagios_nrpe_version: 3.2.0
 nagios_build_directory: /tmp
 nagios_ssl_lib_path: /usr/lib/x86_64-linux-gnu
 nagios_password: nagiosadmin
 nagios_user: nagiosadmin
-nagios_admin_email: ops@example.com
-nagios_admin_name: 'Nagios Admin'
-nagios_host: nagios.exmple.com
+#nagios_admin_email: ops@example.com
+#nagios_admin_name: 'Nagios Admin'
+#nagios_host: nagios.exmple.com
 nagios_log_directory: /var/log
 
 nagios_pagerduty_key: xxxxxxxxxxxxxxxxxxxxxx
@@ -54,14 +51,14 @@ nagios_aws_access_key_id: xxxxxxxxxxxxxxxx
 nagios_aws_access_key_secret: xxxxxxxxxxxxxxx
 nagios_ses_region: email.us-east-1.amazonaws.com
 
-nagios_tarball: http://downloads.sourceforge.net/project/nagios/nagios-4.x/nagios-4.0.6/nagios-4.0.6.tar.gz
-nagios_tarball_sha256sum: d400190c771eb90e0ba16351f6358fa7e22e42a7be986f2066db63518a14397b
+nagios_tarball: https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.3.4.tar.gz
+nagios_tarball_sha256sum: c90b7812d9e343db12be19a572e15c415c5d6353a91c5e226e432c2d4aaa44f1
 
-nagios_plugin_tarball: https://www.nagios-plugins.org/download/nagios-plugins-2.0.tar.gz
-nagios_plugin_tarball_sha256sum: ba1080648abd912f55c18b248e7065db77a87d0c72611ab16c17af8b65da7684
+nagios_plugin_tarball: http://www.nagios-plugins.org/download/nagios-plugins-2.1.4.tar.gz
+nagios_plugin_tarball_sha256sum: 4355b5daede0fa72bbb55d805d724dfa3d05e7f66592ad71b4e047c6d9cdd090
 
-nagios_nrpe_tarball: http://downloads.sourceforge.net/project/nagios/nrpe-2.x/nrpe-2.15/nrpe-2.15.tar.gz
-nagios_nrpe_tarball_sha256sum: 66383b7d367de25ba031d37762d83e2b55de010c573009c6f58270b137131072
+nagios_nrpe_tarball: https://github.com/NagiosEnterprises/nrpe/releases/download/nrpe-3.2.0/nrpe-3.2.0.tar.gz
+nagios_nrpe_tarball_sha256sum: 6f4a0cfe1d7b7b38e43f9f87909f5cb1e3a7150a2ccfc0a6822e3b1e7d76cf8e
 
 nagios_ssl_cert_pem: /etc/apache2/ssl/nagios.pem
 nagios_ssl_cert_key: /etc/apache2/ssl/nagios.key

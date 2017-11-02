@@ -1,22 +1,22 @@
 - name: download nagios nrpe tarball
-  sudo: true
+  become: true
   get_url: >
     dest={{nagios_build_directory}}
     url={{nagios_nrpe_tarball}}
     sha256sum={{nagios_nrpe_tarball_sha256sum}}
 
-- name: untar the tarball
-  sudo: true
+- name: untar the nrpe tarball
+  become: true
   command: "tar -xvf nrpe-{{nagios_nrpe_version}}.tar.gz chdir={{nagios_build_directory}}"
 
-- name: configure
-  sudo: true
+- name: configure nrpe
+  become: true
   command: "./configure --with-ssl=/usr/bin/openssl --with-ssl-lib={{nagios_ssl_lib_path}} chdir={{nagios_build_directory}}/nrpe-{{nagios_nrpe_version}}"
 
-- name: make
-  sudo: true
+- name: make nrpe
+  become: true
   command: "make all chdir={{nagios_build_directory}}/nrpe-{{nagios_nrpe_version}}"
 
 - name: install nagios nrpe package
-  sudo: true
+  become: true
   command: "checkinstall --pkgname=nrpe --requires='perl,libc6' --default chdir={{nagios_build_directory}}/nrpe-{{nagios_nrpe_version}}"
